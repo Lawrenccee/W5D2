@@ -1,0 +1,13 @@
+<h1>All Subs</h1>
+
+<div class="">
+  <%= link_to "Make New Sub", new_sub_url %>
+  <%= link_to "Create Post for Multiple Subs", new_post_url %>
+
+  <ul>
+    <% @subs.each do |sub| %>
+      <li><%= link_to sub.title, sub_url(sub) %></li>
+      <br>
+    <% end %>
+  </ul>
+</div>

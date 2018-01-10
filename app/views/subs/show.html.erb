@@ -1,0 +1,40 @@
+<div class="">
+  <h1><%= @sub.title %></h1>
+  <h3><p><%= @sub.description %></p></h3>
+
+  <ul>
+
+    <li><%= link_to 'Edit Sub', edit_sub_url(@sub) %></li>
+    <li><%= link_to 'All Subs', subs_url %></li>
+  </ul>
+
+
+  <h2>Add Post to Sub</h2>
+  <form class="" action="<%= sub_posts_url(@sub) %>" method="post">
+    <%= auth_token %>
+    <label>Title
+      <input type="text" name="post[title]" value="">
+    </label>
+
+    <label>URL
+      <input type="text" name="post[url]" value="">
+    </label>
+
+    <label>Content
+      <input type="text" name="post[content]" value="">
+    </label>
+
+    <input type="submit" name="" value="Create New Post">
+  </form>
+
+  <% @sub.posts.each do |post| %>
+    <ul>
+      <li><%= link_to post.title, post_url(post) %></li>
+      <li><%= post.url %></li>
+      <li><%= post.content %></li>
+      <li><%= link_to 'Edit Post', edit_post_url(post) %></li>
+      <li><%= button_to 'Delete Post', post_url(post), method: :delete %></li>
+    </ul>
+
+  <% end %>
+</div>

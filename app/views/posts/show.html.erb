@@ -1,0 +1,20 @@
+<div class="">
+  <h1><%= @post.title %></h1>
+
+  <ul>
+    <li><%= @post.url %></li>
+    <li><p><%= @post.content %></p></li>
+    <li><%= link_to 'Edit Post', edit_post_url(@post) %></li>
+    <li><%= button_to 'Delete Post', post_url(@post), method: :delete %></li>
+  </ul>
+
+  <h3>Add Comment</h3>
+  <%= link_to 'Add Comment', new_post_comment_url(@post) %>
+
+  <h2>Comments</h2>
+  <ul>
+    <% @post.comments.each do |comment| %>
+      <li><%= comment.content %></li>
+    <% end %>
+  </ul>
+</div>

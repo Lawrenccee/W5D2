@@ -1,0 +1,37 @@
+<div class="">
+  <h1>Edit Post</h1>
+
+  <form class="" action="<%= post_url(@post) %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <%= auth_token %>
+
+    <label for="">Title
+      <input type="text" name="post[title]" value="">
+    </label>
+
+    <label for="">URL
+      <input type="text" name="post[url]" value="">
+    </label>
+
+    <label for="">Content
+      <input type="text" name="post[content]" value="">
+    </label>
+
+    <span style="display: flex; flex-direction: column;">
+      <h2>Subs</h2>
+      <input type="hidden" name="post[sub_ids][]" value="">
+      <% Sub.all.each do |sub| %>
+        <div class="">
+          <label for="">
+            <input type="checkbox"
+            name="post[sub_ids][]"
+            value="<%= sub.id %>">
+          </label>
+          <%= sub.title %>
+        </div>
+      <% end %>
+    </span>
+
+    <input type="submit" name="" value="Update Post">
+  </form>
+</div>
